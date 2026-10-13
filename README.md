@@ -98,7 +98,9 @@ npm run audit:data   # accuracy audit vs published figures
 
 Node 18+. No API key, no database, no configuration.
 
-Deploying: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
+Publishing it: **[docs/GETTING-LIVE.md](docs/GETTING-LIVE.md)** — the step-by-step
+from empty GitHub account to a site Google has indexed.
+Reference detail on hosting, security and capacity: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
 ```bash
 npm run build:deploy        # clean, secret-free folder for hosting
