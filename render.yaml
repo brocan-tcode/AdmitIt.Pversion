@@ -1,0 +1,43 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+#
+# With this file in the repo, Render reads the settings instead of asking you to
+# type them. That matters for one line in particular: NODE_ENV=production is the
+# setting people skip, and skipping it leaves the site running in development
+# mode in public — detailed error messages, and an open endpoint that dumps the
+# whole knowledge base.
+#
+# To use it: Render dashboard → New + → Blueprint → pick this repo.
+# (The manual "Web Service" path still works and reads the same values.)
+
+services:
+  - type: web
+    name: admitit
+    runtime: node
+    plan: free            # change to "starter" (~$7/mo) to stop it sleeping
+    branch: main
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+
+    envVars:
+      # The one that matters. See src/security.js.
+      - key: NODE_ENV
+        value: production
+
+      # Node 18+ is required; package.json "engines" says so too.
+      - key: NODE_VERSION
+        value: "20"
+
+      # Analytics is opt-in and off unless you fill one of these in.
+      # Both are cookie-free, so no consent banner is needed.
+      #   Cloudflare Web Analytics (free):
+      # - key: CF_ANALYTICS_TOKEN
+      #   value: your-token-here
+      #   Plausible (paid):
+      # - key: PLAUSIBLE_DOMAIN
+      #   value: yourdomain.com
+
+      # Only set this if you embed the tool from another domain you own.
+      # Leaving it unset means same-origin only, which is what you want.
+      # - key: ALLOWED_ORIGINS
+      #   value: https://yourdomain.com
