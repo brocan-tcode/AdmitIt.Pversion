@@ -1,0 +1,27 @@
+{
+  "name": "admitit-pversion",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Admission chances and application planning for international students applying to US universities. By major, not by headline acceptance rate.",
+  "main": "server-rag.js",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "node server-rag.js",
+    "dev": "nodemon server-rag.js",
+    "test": "node src/rag/test.js",
+    "audit:data": "node src/data/auditData.js",
+    "build:content": "node scripts/build-content.js",
+    "build:deploy": "bash scripts/build-deploy.sh",
+    "set-domain": "bash scripts/set-domain.sh"
+  },
+  "dependencies": {
+    "compression": "^1.8.2",
+    "express": "^4.18.2",
+    "express-rate-limit": "^8.7.1",
+    "helmet": "^8.3.0",
+    "pdf-lib": "^1.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

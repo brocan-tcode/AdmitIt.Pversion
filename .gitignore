@@ -1,0 +1,30 @@
+# ─── SECRETS — never commit, never upload ────────────────────────────
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+
+# ─── Unrelated projects that happen to share this folder ─────────────
+# These are separate apps with their own API keys. They must never be
+# part of a deploy of the college tool.
+trend/
+ultrawork/
+video-downloader/
+vid downloader/
+
+# ─── The Claude API build ────────────────────────────────────────────
+# server.js reads ANTHROPIC_API_KEY. The public site runs server-rag.js,
+# which needs no key at all. Shipping server.js invites someone to set a
+# key on the host and start paying per request.
+server.js
+
+# ─── Local machine config (contains absolute paths with your username) ─
+.claude/
+.DS_Store
+**/.DS_Store
+
+# ─── Build / runtime noise ───────────────────────────────────────────
+node_modules/
+npm-debug.log*
+*.pdf

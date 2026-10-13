@@ -1,0 +1,9 @@
+# Allow search engines to index the tool.
+User-agent: *
+Allow: /
+
+# The API endpoints are not pages. Keeping crawlers off them saves your
+# server CPU and stops rate limits being burned by bots rather than students.
+Disallow: /api/
+
+Sitemap: https://example.com/sitemap.xml
