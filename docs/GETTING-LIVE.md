@@ -8,50 +8,46 @@ and have a live site, then do the domain later.
 
 ---
 
-## Part 1 — GitHub (10 minutes)
+## Part 1 — GitHub (5 minutes)
 
-### 1.1 Create the account
-[github.com/signup](https://github.com/signup) if you do not have one. Remember
-the **username** — it appears in your profile URL, `github.com/<username>`.
+**Already done for you:** the local repository exists at
+`~/Downloads/AdmitIt.Pversion` with 4 commits, 77 files, a clean working tree,
+and its remote already pointing at
+`https://github.com/brocan-tcode/AdmitIt.Pversion`. That repo exists on GitHub
+and is empty, waiting.
 
-### 1.2 Create an empty repository
-Go to **[github.com/new](https://github.com/new)**:
+All that remains is the push, which needs you signed in.
 
-| Field | What to put |
-|---|---|
-| Repository name | `AdmitIt.Pversion` |
-| Description | *Admission chances by major for international students* |
-| Public or Private | **Private** is the safer default. You can flip it to Public later |
-| Add a README file | **Leave unticked** |
-| Add .gitignore | **Leave unticked** — "None" |
-| Choose a licence | **Leave unticked** |
+### Easiest: GitHub Desktop (already installed on this Mac)
 
-> Those three must stay unticked. This repo already has a README and a
-> .gitignore, and GitHub's versions would collide the first time you push.
+1. Open **GitHub Desktop**
+2. **File → Add Local Repository…**
+3. Choose `~/Downloads/AdmitIt.Pversion` → **Add Repository**
+   *(Use "Add", not "Create new" — creating makes an empty repo inside this one,
+   which is a confusing mess to undo.)*
+4. If it asks you to sign in, do it — a browser window opens, you approve, done
+5. Click **Push origin** at the top
 
-Click **Create repository**. You will land on a page saying "Quick setup" — that
-is correct. Leave it open.
+Refresh `github.com/brocan-tcode/AdmitIt.Pversion`. Your code is there.
 
-### 1.3 Push
-In Terminal:
+### Alternative: Terminal
 
 ```bash
 cd ~/Downloads/AdmitIt.Pversion
-bash scripts/push-to-github.sh YOUR-GITHUB-USERNAME
+bash scripts/push-to-github.sh brocan-tcode
 ```
 
-The script checks for keys and `.env` files before it sends anything, then asks
-you to sign in. Two possibilities:
+The script checks for keys and `.env` files before sending anything. GitHub will
+ask you to sign in. Note that **your account password will not work** — Git
+needs a **Personal Access Token** instead:
+[github.com/settings/tokens](https://github.com/settings/tokens) → *Generate new
+token (classic)* → tick **repo** → Generate → copy → paste it as the
+**password** at the Terminal prompt.
 
-- **A browser window opens** — approve it there. Easiest path.
-- **Terminal asks for a username and password.** GitHub no longer accepts your
-  account password here. You need a **Personal Access Token**:
-  [github.com/settings/tokens](https://github.com/settings/tokens) → *Generate
-  new token (classic)* → tick **repo** → Generate → copy it → paste it as the
-  **password**. Type it into the Terminal prompt yourself and do not paste it
-  into a chat window, including this one.
+> Type the token into your own Terminal. Never paste it into a chat window,
+> including a conversation with Claude.
 
-Refresh your GitHub page. Your code is there.
+GitHub Desktop avoids all of this, which is why it is listed first.
 
 ---
 
