@@ -20,6 +20,23 @@ if [ -z "$USER_NAME" ]; then
   exit 1
 fi
 
+# Running this with the placeholder copied verbatim pointed the remote at
+# github.com/YOUR-USERNAME and failed confusingly. Catch it by name.
+case "$(echo "$USER_NAME" | tr '[:upper:]' '[:lower:]')" in
+  your-github-username|your-username|username|yourusername|my-username)
+    echo "'$USER_NAME' is the placeholder, not your username."
+    echo ""
+    echo "Open https://github.com and look at the top-right avatar menu, or at"
+    echo "your profile URL: github.com/<this-part-here>"
+    exit 1 ;;
+esac
+
+if ! echo "$USER_NAME" | grep -qE '^[A-Za-z0-9]([A-Za-z0-9-]{0,37}[A-Za-z0-9])?$'; then
+  echo "'$USER_NAME' is not a valid GitHub username."
+  echo "Usernames are letters, numbers and hyphens only."
+  exit 1
+fi
+
 cd "$REPO_DIR"
 
 # ── Refuse to publish anything that should not be public ────────────
