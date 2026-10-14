@@ -6,4 +6,4 @@ Allow: /
 # server CPU and stops rate limits being burned by bots rather than students.
 Disallow: /api/
 
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://admitit.win/sitemap.xml
